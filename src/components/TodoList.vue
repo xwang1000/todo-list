@@ -1,7 +1,13 @@
 <template>
-  <div>
-    Hello todo list
+  <div class="todo-list">
+    <ul>
+      <li v-for="todo in todos" :key="todo.description">
+        {{todo.description}}
+        {{todo.completed}}
+      </li>
+    </ul>
   </div>
+
 </template>
 
 <script>
