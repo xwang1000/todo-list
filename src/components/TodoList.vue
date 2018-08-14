@@ -2,7 +2,7 @@
   <div class="todo-list">
     <h1>TO DO LIST</h1>
     <div>
-      <input type="text" placeholder="Enter todo." v-model="input">
+      <input type="text" placeholder="Enter todo." v-model="input" v-on:keydown.enter="addTodo">
       <button v-on:click="addTodo">+</button>
     </div>
     <ul>
