@@ -1,5 +1,10 @@
 <template>
   <div class="todo-list">
+    <h1>TO DO LIST</h1>
+    <div>
+      <input type="text" placeholder="Enter todo." v-model="input">
+      <button v-on:click="addTodo">+</button>
+    </div>
     <ul>
       <li v-for="todo in todos" :key="todo.description">
         {{todo.description}}
@@ -14,22 +19,30 @@
 export default {
   data () {
     return {
+      input: "",
       todos: [
         {
           description: "Drink water.",
           completed: false
         },
         {
-          description: "Jogg at beach.",
+          description: "Jog at beach.",
           completed: true
         }
       ]
     }
+  },
+  methods: {
+    addTodo() {
+      console.log(this.input)
+    }
   }
 }
-
 </script>
 
 <style>
-
+body {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
 </style>
