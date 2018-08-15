@@ -20,7 +20,7 @@
       </todo-item>
     </ul>
     <div>
-      <button v-on:click="removeCompleted">Remove completed</button>
+      <button class="todo-list__remove-button" v-on:click="removeCompleted">Remove Completed</button>
     </div>
   </div>
 
@@ -112,7 +112,8 @@ body {
   background-color: white;
   max-width: 400px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px;
+  padding-top: 10px;
 }
 
 .todo-list__title {
@@ -123,7 +124,7 @@ body {
 
 .todo-list__inputs {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .todo-list__inputs * {
@@ -156,4 +157,18 @@ body {
   justify-content: center;
   margin: 10px 0;
 }
+
+.todo-list__remove-button {
+  padding: 10px;
+  width: 97%;
+  color: red;
+  background-color: #eee;
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  border-radius: 5px;
+  margin-top: 5px;
+  /* text-transform: lowercase; */
+  font-variant: small-caps;
+}
+
 </style>
