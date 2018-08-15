@@ -6,7 +6,13 @@
       <button v-on:click="addTodo">+</button>
     </div>
     <ul>
-      <todo-item v-for="todo in todos" :key="todo.id" :todo-item="todo"></todo-item>
+      <todo-item
+        v-for="(todo, index) in todos"
+        :key="todo.id"
+        :todo-item="todo"
+        :toggle-completed="() => toggleTodo(index)"
+      >
+      </todo-item>
     </ul>
   </div>
 
@@ -43,6 +49,9 @@ export default {
     addTodo () {
       this.todos.push(createTodoItem(this.input))
       this.input = ''
+    },
+    toggleTodo (index) {
+      this.todos[index].completed = !this.todos[index].completed
     }
   }
 }

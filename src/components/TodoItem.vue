@@ -1,5 +1,5 @@
 <template>
-  <li class="todo-item">
+  <li class="todo-item" v-on:click="toggleCompleted">
     {{todoItem.description}}
     {{todoItem.completed}}
   </li>
@@ -8,7 +8,8 @@
 <script>
 export default {
   props: {
-    todoItem: Object
+    todoItem: Object,
+    toggleCompleted: Function
   }
 }
 </script>
