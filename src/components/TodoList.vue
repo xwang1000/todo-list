@@ -5,7 +5,7 @@
       <input type="text" placeholder="Enter todo." v-model="input" v-on:keydown.enter="addTodo">
       <button v-on:click="addTodo">+</button>
     </div>
-    <ul>
+    <ul class="todo-list__todo-items">
       <todo-item
         v-for="(todo, index) in todos"
         :key="todo.id"
@@ -14,6 +14,9 @@
       >
       </todo-item>
     </ul>
+    <div>
+      <button v-on:click="removeCompleted">Remove completed</button>
+    </div>
   </div>
 
 </template>
@@ -40,7 +43,11 @@ export default {
       input: '',
       todos: [
         createTodoItem('Drink water.'),
-        createTodoItem('Jog at the beach.')
+        createTodoItem('Jog at the beach.'),
+        createTodoItem('Eat smoked salmon.', true),
+        createTodoItem('Eat smoked tuna.'),
+        createTodoItem('Feed a cat.'),
+        createTodoItem('Pet a dog.', true)
       ]
     }
   },
@@ -52,6 +59,9 @@ export default {
     },
     toggleTodo (index) {
       this.todos[index].completed = !this.todos[index].completed
+    },
+    removeCompleted () {
+      this.todos = this.todos.filter(todo => !todo.completed)
     }
   }
 }
@@ -61,5 +71,10 @@ export default {
 body {
   font-family: "Roboto", sans-serif;
   text-align: center;
+  padding: 25px;
+}
+
+.todo-list__todo-items {
+  padding-left: 0;
 }
 </style>

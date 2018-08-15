@@ -15,5 +15,7 @@ export default {
 </script>
 
 <style>
-
+.todo-item {
+  list-style-type: none;
+}
 </style>
