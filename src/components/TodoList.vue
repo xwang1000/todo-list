@@ -15,6 +15,13 @@
 <script>
 import TodoItem from './TodoItem'
 
+const createTodoItem = (description, completed = false) => {
+  return {
+    description,
+    completed
+  }
+}
+
 export default {
   components: {
     TodoItem: TodoItem
@@ -24,24 +31,15 @@ export default {
     return {
       input: '',
       todos: [
-        {
-          description: 'Drink water.',
-          completed: false
-        },
-        {
-          description: 'Jog at beach.',
-          completed: true
-        }
+        createTodoItem('Drink water.'),
+        createTodoItem('Jog at the beach.')
       ]
     }
   },
 
   methods: {
     addTodo () {
-      this.todos.push({
-        description: this.input,
-        completed: false
-      })
+      this.todos.push(createTodoItem(this.input))
     }
   }
 }

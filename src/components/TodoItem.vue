@@ -1,6 +1,7 @@
 <template>
   <li class="todo-item">
     {{todoItem.description}}
+    {{todoItem.completed}}
   </li>
 </template>
 
