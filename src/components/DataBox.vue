@@ -19,13 +19,13 @@ export default {
   background-color: #eee;
   padding: 15px 10px;
   margin: 5px;
-  width: 85px;
+  flex: 1;
   border-radius: 5px;
 }
 
 .data-box__number {
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 700;
   color: black;
 }
 

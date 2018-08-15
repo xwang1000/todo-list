@@ -1,14 +1,14 @@
 <template>
   <div class="todo-list">
-    <h1>TO DO LIST</h1>
+    <h1 class="todo-list__title">Things to do.</h1>
     <div class="todo-list__data-boxes">
       <data-box :number="todosTotal" message="total"></data-box>
       <data-box :number="todosCompleted" message="completed"></data-box>
       <data-box :number="todosNotCompleted" message="not completed"></data-box>
     </div>
-    <div>
-      <input type="text" placeholder="Enter todo." v-model="input" v-on:keydown.enter="addTodo">
-      <button v-on:click="addTodo">+</button>
+    <div class="todo-list__inputs">
+      <input class="todo-list__input" type="text" placeholder="Start typing your todo..." v-model="input" v-on:keydown.enter="addTodo">
+      <button class="todo-list__add-button" v-on:click="addTodo">+</button>
     </div>
     <ul class="todo-list__todo-items">
       <todo-item
@@ -94,10 +94,57 @@ export default {
 </script>
 
 <style>
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
 body {
+  box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   text-align: center;
-  padding: 25px;
+}
+
+.todo-list {
+  background-color: white;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.todo-list__title {
+  font-family: "Amatic SC", serif;
+  font-size: 50px;
+  margin: 5px;
+}
+
+.todo-list__inputs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.todo-list__inputs * {
+  margin: 0 5px;
+}
+
+.todo-list__input {
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+}
+
+.todo-list__add-button {
+  flex: 1;
+  border-radius: 5px;
+  background-color: #eee;
+  font-size: 23px;
+  border: 1px solid #ddd;
 }
 
 .todo-list__todo-items {
@@ -107,6 +154,6 @@ body {
 .todo-list__data-boxes {
   display: flex;
   justify-content: center;
-  margin: 20px;
+  margin: 10px 0;
 }
 </style>
