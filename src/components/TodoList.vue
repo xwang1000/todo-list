@@ -6,17 +6,20 @@
       <button v-on:click="addTodo">+</button>
     </div>
     <ul>
-      <li v-for="todo in todos" :key="todo.description">
-        {{todo.description}}
-        {{todo.completed}}
-      </li>
+      <todo-item v-for="todo in todos" :key="todo.description" :todo-item="todo"></todo-item>
     </ul>
   </div>
 
 </template>
 
 <script>
+import TodoItem from './TodoItem'
+
 export default {
+  components: {
+    TodoItem: TodoItem
+  },
+
   data () {
     return {
       input: '',
@@ -32,9 +35,13 @@ export default {
       ]
     }
   },
+
   methods: {
     addTodo () {
-      console.log(this.input)
+      this.todos.push({
+        description: this.input,
+        completed: false
+      })
     }
   }
 }
