@@ -19,21 +19,21 @@
 export default {
   data () {
     return {
-      input: "",
+      input: '',
       todos: [
         {
-          description: "Drink water.",
+          description: 'Drink water.',
           completed: false
         },
         {
-          description: "Jog at beach.",
+          description: 'Jog at beach.',
           completed: true
         }
       ]
     }
   },
   methods: {
-    addTodo() {
+    addTodo () {
       console.log(this.input)
     }
   }
