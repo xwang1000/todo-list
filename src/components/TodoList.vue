@@ -6,7 +6,7 @@
       <button v-on:click="addTodo">+</button>
     </div>
     <ul>
-      <todo-item v-for="todo in todos" :key="todo.description" :todo-item="todo"></todo-item>
+      <todo-item v-for="todo in todos" :key="todo.id" :todo-item="todo"></todo-item>
     </ul>
   </div>
 
@@ -14,9 +14,11 @@
 
 <script>
 import TodoItem from './TodoItem'
+import getUniqueId from '../utility/getUniqueId'
 
 const createTodoItem = (description, completed = false) => {
   return {
+    id: getUniqueId(),
     description,
     completed
   }
@@ -40,6 +42,7 @@ export default {
   methods: {
     addTodo () {
       this.todos.push(createTodoItem(this.input))
+      this.input = ''
     }
   }
 }
