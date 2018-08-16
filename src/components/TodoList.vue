@@ -80,15 +80,36 @@ export default {
     addTodo () {
       this.todos.push(createTodoItem(this.input))
       this.input = ''
+
+      this.saveTodos()
     },
 
     toggleTodo (index) {
       this.todos[index].completed = !this.todos[index].completed
+
+      this.saveTodos()
     },
 
     removeCompleted () {
       this.todos = this.todos.filter(todo => !todo.completed)
+
+      this.saveTodos()
+    },
+
+    saveTodos () {
+      localStorage.setItem('todos', JSON.stringify(this.todos))
+    },
+
+    loadTodos () {
+      const savedTodos = JSON.parse(localStorage.getItem('todos'))
+      if (savedTodos) {
+        this.todos = savedTodos
+      }
     }
+  },
+
+  created () {
+    this.loadTodos()
   }
 }
 </script>
