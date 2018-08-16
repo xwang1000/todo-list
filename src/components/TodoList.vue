@@ -196,14 +196,18 @@ body {
 .todo-list__remove-button {
   padding: 10px;
   width: 97%;
-  color: red;
+  color: brown;
   background-color: #eee;
   font-family: Roboto, sans-serif;
   font-size: 15px;
   border-radius: 5px;
   margin-top: 5px;
-  /* text-transform: lowercase; */
-  font-variant: small-caps;
+  text-transform: lowercase;
 }
+
+.todo-list__remove-button:hover {
+  cursor: pointer;
+}
+
 
 </style>
