@@ -39,6 +39,7 @@ export default {
 
 .todo-item--completed .todo-item__description {
   text-decoration: line-through;
+  color: lightgrey;
 }
 
 .todo-item__description {
