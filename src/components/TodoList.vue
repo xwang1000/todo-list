@@ -1,6 +1,11 @@
 <template>
   <div class="todo-list">
-    <h1 class="todo-list__title">Things to do.</h1>
+    <div class="todo-list__header">
+      <img class="todo-list__header__img"src="../assets/strawberry.png" alt="A strawberry." width="40px" height="40px">
+      <h1 class="todo-list__title">Things to do.</h1>
+      <img class="todo-list__header__img"src="../assets/strawberry.png" alt="A strawberry." width="40px" height="40px">
+
+    </div>
     <div class="todo-list__data-boxes">
       <data-box :number="todosTotal" message="total"></data-box>
       <data-box :number="todosCompleted" message="completed"></data-box>
@@ -127,6 +132,15 @@ body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   text-align: center;
+}
+
+.todo-list__header {
+  color: brown;
+  display: flex;
+}
+
+.todo-list__header__img {
+  margin: 20px;
 }
 
 .todo-list {
