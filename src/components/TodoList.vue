@@ -102,19 +102,28 @@ export default {
     },
 
     saveTodos () {
+      this.sortCompleted()
       localStorage.setItem('todos', JSON.stringify(this.todos))
     },
 
     loadTodos () {
       const savedTodos = JSON.parse(localStorage.getItem('todos'))
+
       if (savedTodos) {
         this.todos = savedTodos
       }
+    },
+
+    sortCompleted () {
+      const completedItems = this.todos.filter(todo => todo.completed)
+      const incompletedItems = this.todos.filter(todo => !todo.completed)
+      this.todos = incompletedItems.concat(completedItems)
     }
   },
 
   created () {
     this.loadTodos()
+    this.sortCompleted()
   }
 }
 </script>
@@ -208,6 +217,5 @@ body {
 .todo-list__remove-button:hover {
   cursor: pointer;
 }
-
 
 </style>
