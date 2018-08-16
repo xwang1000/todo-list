@@ -1,9 +1,9 @@
 <template>
   <div class="todo-list">
     <div class="todo-list__header">
-      <img class="todo-list__header__img"src="../assets/strawberry.png" alt="A strawberry." width="40px" height="40px">
+      <img class="todo-list__header__img" src="../assets/strawberry.png" alt="A strawberry." width="40px" height="40px">
       <h1 class="todo-list__title">Things to do.</h1>
-      <img class="todo-list__header__img"src="../assets/strawberry.png" alt="A strawberry." width="40px" height="40px">
+      <img class="todo-list__header__img" src="../assets/strawberry.png" alt="A strawberry." width="40px" height="40px">
 
     </div>
     <div class="todo-list__data-boxes">
