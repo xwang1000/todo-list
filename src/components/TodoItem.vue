@@ -6,14 +6,18 @@
     <div class="todo-item__description">
       {{todoItem.description}}
     </div>
-    <div class="todo-item__checkbox">
-      <input type="checkbox" v-on:click="toggleCompleted" :checked="todoItem.completed">
-    </div>
+    <check-box :box-checked="todoItem.completed" :on-click="toggleCompleted"></check-box>
   </li>
 </template>
 
 <script>
+import CheckBox from './CheckBox'
+
 export default {
+  components: {
+    CheckBox
+  },
+
   props: {
     todoItem: Object,
     toggleCompleted: Function
