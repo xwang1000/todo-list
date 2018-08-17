@@ -39,6 +39,7 @@ import getUniqueId from '../utility/getUniqueId'
 const createTodoItem = (description, completed = false) => {
   return {
     id: getUniqueId(),
+    createdAt: new Date().toISOString(),
     description,
     completed
   }
@@ -86,23 +87,24 @@ export default {
       this.todos.push(createTodoItem(this.input))
       this.input = ''
 
-      this.saveTodos()
+      // this.saveTodos()
     },
 
     toggleTodo (index) {
       this.todos[index].completed = !this.todos[index].completed
 
-      this.saveTodos()
+      // this.saveTodos()
     },
 
     removeCompleted () {
       this.todos = this.todos.filter(todo => !todo.completed)
 
-      this.saveTodos()
+      // this.saveTodos()
     },
 
     saveTodos () {
-      this.sortCompleted()
+      this.sortByCreationTime()
+      this.sortByCompletionStatus()
       localStorage.setItem('todos', JSON.stringify(this.todos))
     },
 
@@ -114,7 +116,13 @@ export default {
       }
     },
 
-    sortCompleted () {
+    sortByCreationTime () {
+      this.todos = this.todos.sort((todoX, todoY) => {
+        return new Date(todoX.createdAt) > new Date(todoY.createdAt)
+      })
+    },
+
+    sortByCompletionStatus () {
       this.todos = [
         ...this.todos.filter(todo => !todo.completed),
         ...this.todos.filter(todo => todo.completed)
@@ -124,7 +132,7 @@ export default {
 
   created () {
     this.loadTodos()
-    this.sortCompleted()
+    this.sortByCompletionStatus()
   }
 }
 </script>
