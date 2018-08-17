@@ -17,10 +17,10 @@
     </div>
     <ul class="todo-list__todo-items">
       <todo-item
-        v-for="(todo, index) in todos"
+        v-for="todo in todosProcessedForDisplay"
         :key="todo.id"
         :todo-item="todo"
-        :toggle-completed="() => toggleTodo(index)"
+        :toggle-completed="() => toggleTodo(todo.id)"
       >
       </todo-item>
     </ul>
@@ -43,6 +43,20 @@ const createTodoItem = (description, completed = false) => {
     description,
     completed
   }
+}
+
+// functions that dont have side effects or dependencies
+const getTodosSortedByCreationDate = todoList => {
+  return todoList.sort((todoX, todoY) => {
+    return new Date(todoX.createdAt) > new Date(todoY.createdAt)
+  })
+}
+
+const getTodosSortedByCompletionStatus = todoList => {
+  return [
+    ...todoList.filter(todo => !todo.completed),
+    ...todoList.filter(todo => todo.completed)
+  ]
 }
 
 export default {
@@ -78,6 +92,15 @@ export default {
 
     todosNotCompleted () {
       return this.todosTotal - this.todosCompleted
+    },
+
+    todosProcessedForDisplay () {
+      // sort by completion status after
+      return getTodosSortedByCompletionStatus(
+        getTodosSortedByCreationDate(
+          this.todos
+        )
+      )
     }
   },
 
@@ -87,24 +110,26 @@ export default {
       this.todos.push(createTodoItem(this.input))
       this.input = ''
 
-      // this.saveTodos()
+      this.saveTodos()
     },
 
-    toggleTodo (index) {
-      this.todos[index].completed = !this.todos[index].completed
+    toggleTodo (id) {
+      this.todos.forEach(todo => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed
+        }
+      })
 
-      // this.saveTodos()
+      this.saveTodos()
     },
 
     removeCompleted () {
       this.todos = this.todos.filter(todo => !todo.completed)
 
-      // this.saveTodos()
+      this.saveTodos()
     },
 
     saveTodos () {
-      this.sortByCreationTime()
-      this.sortByCompletionStatus()
       localStorage.setItem('todos', JSON.stringify(this.todos))
     },
 
@@ -114,25 +139,11 @@ export default {
       if (savedTodos) {
         this.todos = savedTodos
       }
-    },
-
-    sortByCreationTime () {
-      this.todos = this.todos.sort((todoX, todoY) => {
-        return new Date(todoX.createdAt) > new Date(todoY.createdAt)
-      })
-    },
-
-    sortByCompletionStatus () {
-      this.todos = [
-        ...this.todos.filter(todo => !todo.completed),
-        ...this.todos.filter(todo => todo.completed)
-      ]
     }
   },
 
   created () {
     this.loadTodos()
-    this.sortByCompletionStatus()
   }
 }
 </script>
@@ -226,5 +237,4 @@ body {
 .todo-list__remove-button:hover {
   cursor: pointer;
 }
-
 </style>
