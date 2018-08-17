@@ -115,9 +115,10 @@ export default {
     },
 
     sortCompleted () {
-      const completedItems = this.todos.filter(todo => todo.completed)
-      const incompletedItems = this.todos.filter(todo => !todo.completed)
-      this.todos = incompletedItems.concat(completedItems)
+      this.todos = [
+        ...this.todos.filter(todo => !todo.completed),
+        ...this.todos.filter(todo => todo.completed)
+      ]
     }
   },
 
