@@ -35,10 +35,11 @@
 import TodoItem from './TodoItem'
 import DataBox from './DataBox'
 import getUniqueId from '../utility/getUniqueId'
+import getArrayFromMap from '../utility/getArrayFromMap'
 
-const createTodoItem = (description, completed = false) => {
+const createTodoItem = (description, completed = false, id = getUniqueId()) => {
   return {
-    id: getUniqueId(),
+    id,
     createdAt: new Date().toISOString(),
     description,
     completed
@@ -69,25 +70,22 @@ export default {
   data () {
     return {
       input: '',
-      todos: [
-        createTodoItem('Drink water.'),
-        createTodoItem('Jog at the beach.'),
-        createTodoItem('Eat smoked salmon.', true),
-        createTodoItem('Eat smoked tuna.'),
-        createTodoItem('Feed a cat.'),
-        createTodoItem('Pet a dog.', true)
-      ]
+      todos: {}
     }
   },
 
   computed: {
 
+    todosArray () {
+      return getArrayFromMap(this.todos)
+    },
+
     todosTotal () {
-      return this.todos.length
+      return this.todosArray.length
     },
 
     todosCompleted () {
-      return this.todos.filter(todo => todo.completed).length
+      return this.todosArray.filter(todo => todo.completed).length
     },
 
     todosNotCompleted () {
@@ -98,7 +96,7 @@ export default {
       // sort by completion status after
       return getTodosSortedByCompletionStatus(
         getTodosSortedByCreationDate(
-          this.todos
+          this.todosArray
         )
       )
     }
@@ -107,24 +105,28 @@ export default {
   methods: {
 
     addTodo () {
-      this.todos.push(createTodoItem(this.input))
+      const newTodo = createTodoItem(this.input)
+      this.todos[newTodo.id] = newTodo
+      this.todos = { ...this.todos } // force vue detect changes
+
       this.input = ''
 
       this.saveTodos()
     },
 
     toggleTodo (id) {
-      this.todos.forEach(todo => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed
-        }
-      })
+      this.todos[id].completed = !this.todos[id].completed
 
       this.saveTodos()
     },
 
     removeCompleted () {
-      this.todos = this.todos.filter(todo => !todo.completed)
+      Object.keys(this.todos).forEach(id => {
+        if (this.todos[id].completed) {
+          delete this.todos[id]
+        }
+      })
+      this.todos = { ...this.todos } // force vue to detect changes
 
       this.saveTodos()
     },
@@ -138,6 +140,10 @@ export default {
 
       if (savedTodos) {
         this.todos = savedTodos
+      } else {
+        this.todos['0'] = createTodoItem('Drink Americano.', false, '0')
+        this.todos['1'] = createTodoItem('Jog at the beach.', true, '1')
+        this.todos['2'] = createTodoItem('Play bass.', false, '2')
       }
     }
   },
