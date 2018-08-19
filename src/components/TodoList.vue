@@ -1,7 +1,7 @@
 <template>
   <div class="todo-list">
     <div class="todo-list__header">
-      <h1 class="todo-list__title">Things to do.</h1>
+      <h1 class="todo-list__title">Things to do</h1>
     </div>
     <div class="todo-list__data-boxes">
       <data-box :number="todosTotal" message="total"></data-box>
@@ -10,7 +10,7 @@
     </div>
     <div class="todo-list__inputs">
       <input class="todo-list__input" type="text" placeholder="Start typing your todo..." v-model="input" v-on:keydown.enter="addTodo">
-      <button class="todo-list__add-button" v-on:click="addTodo">+</button>
+      <button class="todo-list__add-button" v-on:click="addTodo">add</button>
     </div>
     <ul class="todo-list__todo-items">
       <todo-item
@@ -164,31 +164,35 @@ body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   text-align: center;
-  background-image: url("../assets/bg-bluedots.png");
-  color: #565676;
+  background-image: url(../assets/bg-leaf.png);
 }
 
 .todo-list {
-  background-color: #eee;
-  max-width: 400px;
+  background-color: #F3D0D3;
+  width: 400px;
+  height: 400px;
   margin: 30px auto;
-  padding: 15px 20px;
-  border-radius: 5px;
+  border-radius: 230px;
 }
 
 .todo-list__header {
-  color: #565676;
+  color: white;
 }
 
 .todo-list__title {
-  font-family: "Amatic SC", serif;
-  font-size: 50px;
-  margin: 5px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 55px;
+  text-transform: uppercase;
+  text-shadow: 0 5px 0 #E89BAC;
 }
 
 .todo-list__inputs {
   display: flex;
   margin-bottom: 15px;
+  padding: 0;
+  background-color: white;
+  margin: 0 60px;
 }
 
 .todo-list__inputs * {
@@ -196,21 +200,29 @@ body {
 }
 
 .todo-list__input {
-  font-size: 20px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid lightgrey;
-  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  padding: 5px;
+  border: none;
+  font-family: "Open Sans", monospace;
   font-weight: 300;
-  color: #565676;
+  color:grey;
+  flex: 4;
 }
 
 .todo-list__add-button {
-  flex: 1;
-  border-radius: 5px;
-  background-color: #eee;
-  font-size: 23px;
-  border: 1px solid #ddd;
+  flex: 1;  
+  font-size: 14px;
+  border: none;
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+  color: grey;
+}
+
+.todo-list__add-button:hover {
+  cursor: pointer;
+  font-size: 15px;
+  transition: font-size, 0.2s;
 }
 
 .todo-list__todo-items {
@@ -224,18 +236,26 @@ body {
 }
 
 .todo-list__remove-button {
-  padding: 10px;
-  width: 97%;
-  color: #565676;
-  background-color: #eee;
-  font-family: Roboto, sans-serif;
+  padding: 12px;
+  width: 50%;
+  color: grey;
+  background-color: papayawhip;
+  /* background-image: linear-gradient(to left bottom, #ff9671, #ff8c76, #ff817e, #ff7887, #ff6f91); */
+  font-family: "Open Sans", sans-serif;
   font-size: 15px;
-  border-radius: 5px;
-  margin-top: 5px;
+  border-radius: 20px;
+  margin-top: 15px;
   text-transform: lowercase;
+  border: none;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.2);
 }
 
 .todo-list__remove-button:hover {
   cursor: pointer;
+  margin-top: 13px;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+  transform: rotate(10deg);
+  transition-property: margin-top, box-shadow, transform;
+  transition-duration: 1s;
 }
 </style>

@@ -31,11 +31,11 @@ export default {
   text-align: left;
   padding: 10px;
   display: flex;
-  width: 97%;
   margin: 10px auto;
-  border-radius: 5px;
-  background-color: #E3C0D3;
-  color: white;
+  max-width: 70%;
+  border-radius: 3px;
+  background-color: #E89BAC;
+  color: #565676;
 }
 
 .todo-item--completed .todo-item__description {

@@ -16,7 +16,6 @@ export default {
 
 <style>
 .data-box {
-  background-color: #E3C0D3;
   padding: 15px 10px;
   margin: 5px;
   flex: 1;
