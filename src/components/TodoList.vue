@@ -1,10 +1,7 @@
 <template>
   <div class="todo-list">
     <div class="todo-list__header">
-      <img class="todo-list__header__img" src="../assets/strawberry.png" alt="A strawberry." width="40px" height="40px">
       <h1 class="todo-list__title">Things to do.</h1>
-      <img class="todo-list__header__img" src="../assets/strawberry.png" alt="A strawberry." width="40px" height="40px">
-
     </div>
     <div class="todo-list__data-boxes">
       <data-box :number="todosTotal" message="total"></data-box>
@@ -167,23 +164,20 @@ body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   text-align: center;
-}
-
-.todo-list__header {
-  color: brown;
-  display: flex;
-}
-
-.todo-list__header__img {
-  margin: 20px;
+  background-image: url("../assets/bg-bluedots.png");
+  color: #565676;
 }
 
 .todo-list {
-  background-color: white;
+  background-color: #eee;
   max-width: 400px;
-  margin: 0 auto;
-  padding: 0 20px;
-  padding-top: 10px;
+  margin: 30px auto;
+  padding: 15px 20px;
+  border-radius: 5px;
+}
+
+.todo-list__header {
+  color: #565676;
 }
 
 .todo-list__title {
@@ -208,6 +202,7 @@ body {
   border: 1px solid lightgrey;
   font-family: Roboto, sans-serif;
   font-weight: 300;
+  color: #565676;
 }
 
 .todo-list__add-button {
@@ -231,7 +226,7 @@ body {
 .todo-list__remove-button {
   padding: 10px;
   width: 97%;
-  color: brown;
+  color: #565676;
   background-color: #eee;
   font-family: Roboto, sans-serif;
   font-size: 15px;

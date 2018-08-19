@@ -1,5 +1,7 @@
 <template>
-  <img class="check-box" v-on:click="onClick" :src="imageSource" width="20px" height="20px">
+<div class="check-box" v-on:click="onClick">
+  <img :src="imageSource" width="20px" height="20px">
+</div>
 </template>
 
 <script>

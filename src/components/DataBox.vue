@@ -16,7 +16,7 @@ export default {
 
 <style>
 .data-box {
-  background-color: #eee;
+  background-color: #E3C0D3;
   padding: 15px 10px;
   margin: 5px;
   flex: 1;
@@ -26,11 +26,11 @@ export default {
 .data-box__number {
   font-size: 22px;
   font-weight: 700;
-  color: black;
+  color: white;
 }
 
 .data-box__message {
   font-size: 12px;
-  color: grey;
+  color: white;
 }
 </style>

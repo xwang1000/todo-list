@@ -34,12 +34,13 @@ export default {
   width: 97%;
   margin: 10px auto;
   border-radius: 5px;
-  background-color: #eee;
+  background-color: #E3C0D3;
+  color: white;
 }
 
 .todo-item--completed .todo-item__description {
   text-decoration: line-through;
-  color: lightgrey;
+  color: white;
 }
 
 .todo-item__description {
