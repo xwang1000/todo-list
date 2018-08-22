@@ -243,19 +243,16 @@ body {
   /* background-image: linear-gradient(to left bottom, #ff9671, #ff8c76, #ff817e, #ff7887, #ff6f91); */
   font-family: "Open Sans", sans-serif;
   font-size: 15px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   margin-top: 15px;
   text-transform: lowercase;
   border: none;
-  box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.03);
 }
 
 .todo-list__remove-button:hover {
   cursor: pointer;
-  margin-top: 13px;
-  box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-  transform: rotate(10deg);
-  transition-property: margin-top, box-shadow, transform;
-  transition-duration: 1s;
+  transform: rotate(5deg);
+  transition: transform 0.3s ease-in;
 }
 </style>
